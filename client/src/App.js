@@ -56,17 +56,17 @@ export default class App extends Component {
     });
     const u = new URLSearchParams(this.state).toString();
     console.log(u);
-    fetch('http://localhost:5000/?' + u)
+    fetch('http://alpinelabs.ch:5000/?' + u)
         .then(response => response.json())
         .then(data => this.setState({ prediction: data.prediction }));
-    fetch('http://localhost:5000/get_features')
+    fetch('http://alpinelabs.ch:5000/get_features')
         .then(response => response.json())
         .then(data => this.setState({ features: data.features }));
   }
 
   onChangeValue(feature){
     const u = new URLSearchParams(feature).toString();
-    fetch('http://localhost:5000/?' + u)
+    fetch('http://alpinelabs.ch:5000/?' + u)
         .then(response => response.json())
         .then(data => this.setState({ prediction: data.prediction }));
   }
@@ -80,7 +80,7 @@ export default class App extends Component {
 
     //console.log(this.state.rca);
     let props = {"callback": this.onChangeValue.bind(this)}
-    
+
     for (let feature of features) {
       props["feature"] = feature;
       props["color"] = this.state.rca[features.indexOf(feature)];
@@ -94,7 +94,7 @@ export default class App extends Component {
         toggles.push(component_toggle(props));
       }
     }
-    
+
     return (
       <div className="App" style={{backgroundImage: "url(" + background + ")", backgroundSize: "cover"}}>
         <h1 style={{color: "black", paddingTop: "30px", paddingBottom: "0px", marginTop: "0px"}}>Spotify Stream Predictor</h1>
@@ -146,10 +146,10 @@ export default class App extends Component {
     });
     const u = new URLSearchParams(this.state).toString();
     console.log(u);
-    fetch('http://localhost:5000/?' + u)
+    fetch('http://alpinelabs.ch:5000/?' + u)
         .then(response => response.json())
         .then(data => this.setState({ prediction: data.prediction }));
-    fetch('http://localhost:5000/get_features')
+    fetch('http://alpinelabs.ch:5000/get_features')
         .then(response => response.json())
         .then(data => this.setState({ features: data.features }));
     this.render();
